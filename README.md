@@ -44,7 +44,10 @@ node timeserver.js
 ```
 
 
-In Claude desktop for example.
+To run the server, you need to add it to your MCP configuration. For example, if you are using Claude Desktop, you can do this by modifying the `claude_desktop_config.json` file, for some reason cloude might not recognize the server untill you reinstall it the claude desktop app, so you might need to do that after adding the server.
+### Example Configuration for Claude Desktop
+
+```bash
 edit claude_desktop_config.json
 ```bash
 {
