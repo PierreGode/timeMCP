@@ -17,16 +17,16 @@ mkdir mcp-time-server
 cd mcp-time-server
 ```
 
-2. Save the server code as `server.js` and the package configuration as `package.json`
+2. Save the server code as `timeserver.js` and the package configuration as `package.json`
 
 3. Install dependencies:
 ```bash
 npm install
 ```
 
-4. Make the server executable:
+4. If in Linux Make the server executable:
 ```bash
-chmod +x server.js
+chmod +x timeserver.js
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ chmod +x server.js
 The server runs on stdio transport (standard input/output):
 
 ```bash
-node server.js
+node timeserver.js
 ```
 
 ### Available Tools
