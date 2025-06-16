@@ -1,0 +1,26 @@
+{
+  "name": "mcp-time-server",
+  "version": "0.1.0",
+  "description": "MCP server for time and date operations",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "mcp-time-server": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --inspect server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "time",
+    "date",
+    "server"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
