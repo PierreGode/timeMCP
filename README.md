@@ -2,7 +2,8 @@
 
 A Model Context Protocol (MCP) server that provides time and date functionality. This server exposes tools for getting current time, date, and formatting timestamps in various formats and timezones.
 
-![image](https://github.com/user-attachments/assets/b68db136-0275-432b-82cd-4bd0a244457d)
+![image](https://github.com/user-attachments/assets/a4b9775e-9976-47ad-996d-ba0b4bcf2845)
+
 
 
 ## Features
@@ -41,6 +42,22 @@ The server runs on stdio transport (standard input/output):
 ```bash
 node timeserver.js
 ```
+
+
+In Claude desktop for example.
+edit claude_desktop_config.json
+```bash
+{
+  "mcpServers": {
+    "time-server": {
+      "command": "node",
+      "args": ["C:\\Users\\youruser\\Documents\\timeMCP\\timeserver.js"],
+      "env": {}
+    }
+  }
+}
+```
+
 
 ### Available Tools
 
