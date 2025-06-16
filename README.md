@@ -11,10 +11,10 @@ A Model Context Protocol (MCP) server that provides time and date functionality.
 
 ## Installation
 
-1. Create a new directory for your MCP server:
+1. clone MCP server:
 ```bash
-mkdir mcp-time-server
-cd mcp-time-server
+git clone https://github.com/PierreGode/timeMCP.git
+cd timeMCP
 ```
 
 2. Save the server code as `timeserver.js` and the package configuration as `package.json`
