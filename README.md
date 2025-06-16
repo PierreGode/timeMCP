@@ -2,6 +2,9 @@
 
 A Model Context Protocol (MCP) server that provides time and date functionality. This server exposes tools for getting current time, date, and formatting timestamps in various formats and timezones.
 
+![image](https://github.com/user-attachments/assets/b68db136-0275-432b-82cd-4bd0a244457d)
+
+
 ## Features
 
 - **get_current_time**: Get current time in ISO, local, UTC, or Unix timestamp format
