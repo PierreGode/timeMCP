@@ -2,6 +2,10 @@
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
 import express from "express";
 import cors from "cors";
 
@@ -9,6 +13,7 @@ class TimeServerHTTP {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || 3000;
+    this.transport = null;
     
     this.server = new Server(
       {
@@ -42,7 +47,7 @@ class TimeServerHTTP {
 
   setupToolHandlers() {
     // List available tools
-    this.server.setRequestHandler('tools/list', async () => {
+    this.server.setRequestHandler(ListToolsRequestSchema, async () => {
       return {
         tools: [
           {
@@ -136,7 +141,7 @@ class TimeServerHTTP {
     });
 
     // Handle tool calls
-    this.server.setRequestHandler('tools/call', async (request) => {
+    this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
 
       try {
@@ -367,12 +372,21 @@ class TimeServerHTTP {
   }
 
   async run() {
-    // Create SSE transport
-    const transport = new SSEServerTransport("/mcp", this.app);
-    
-    // Connect server to transport
-    await this.server.connect(transport);
-    
+    // Establish SSE connection on GET /mcp
+    this.app.get('/mcp', async (req, res) => {
+      this.transport = new SSEServerTransport('/mcp', res);
+      await this.server.connect(this.transport);
+    });
+
+    // Handle POST messages for the established SSE session
+    this.app.post('/mcp', async (req, res) => {
+      if (!this.transport) {
+        res.status(500).send('SSE connection not established');
+        return;
+      }
+      await this.transport.handlePostMessage(req, res);
+    });
+
     // Start Express server
     this.app.listen(this.port, '0.0.0.0', () => {
       console.log(`MCP Time Server running on http://0.0.0.0:${this.port}`);
