@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/pierregode-timemcp-badge.png)](https://mseep.ai/app/pierregode-timemcp)
+
 # MCP Time Server
 
 A Model Context Protocol (MCP) server that provides time and date functionality. This server exposes tools for getting current time, date, and formatting timestamps in various formats and timezones.
